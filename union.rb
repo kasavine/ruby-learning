@@ -1,10 +1,7 @@
 
-
 =begin
-
 	string1 = abcdefghig
 	string2 = efghigklmnop
-
 	result = abcdefghigklmnop
 =end
 
