@@ -1,3 +1,11 @@
+=begin
+    
+A function to determine a number’s prime factor.
+Factors are the numbers you multiply together to get another number.
+15 -> 5 and 3
+102 -> 2 and 3 and 17  
+
+=end
 
 # check if num is prime, returs true or false
 def is_prime(num)
