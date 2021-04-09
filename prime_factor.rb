@@ -14,29 +14,24 @@ end
 # returns arrays of numbers - factors
 def recursive_div(num, factors)
     if num % 2 == 0
-        num = num / 2
-        factors << 2
+        factor = 2
     elsif num % 3 == 0
-        num = num / 3
-        factors << 3
+        factor = 3
     elsif num % 5 == 0
-        num = num / 5
-        factors << 5
-    elsif num % 7 == 0
-        num = num / 7
-        factors << 7
-    else
-        return nil
+        factor = 5
+    elsif num % 7 == 7
+        factor = 7
     end
+
+    num = num / factor
+    factors << factor
+
     if (is_prime(num) && factors.length > 0)
         factors << num
         return factors
+    else
+        return recursive_div(num, factors)
     end
-    if (!is_prime(num))
-        factors_res = recursive_div(num, factors.dup)
-        (factors_res != nil) ?  factors_res : nil
-    end
-    # return factors  
 end
 
 def factorization(num)
@@ -48,6 +43,7 @@ def factorization(num)
 end
 
 # testing 
-[2, 3, 4, 5, 7, 9, 19, 23, 24, 100, 102, 228, 300, 22809].each do |test|
+[2, 3, 4, 5, 6, 7, 9, 15, 19, 23, 24, 100, 102, 228, 300, 22809].each do |test|
     puts "Input is #{test}: " + factorization(test).to_s
 end
+
