@@ -1,3 +1,5 @@
+require 'colorize'
+
 def check_doubles(string, char)
 	0.upto string.length - 1 do |index|
 		if string[index] == char
@@ -22,6 +24,56 @@ def inter (string1, string2)
 	 return res_string
 end
 
-p inter("padinton", "paqefwtdjetyiytjneytjoeyjnejeyj")  ## padinto
-p inter("ddf6vewg64f", "gtwthgdwthdwfteewhrtag6h4ffdhsd")  ## df6ewg4
-p inter("rienc", "cette phrase ne cache rien")  ## rienc
+
+#   ------------- 
+#   --- tests ---
+#   -------------
+
+def draw_header
+	test_name = "| TEST: inter |"
+	puts "=" * test_name.length
+	puts test_name
+	puts "=" * test_name.length
+end
+
+def test1
+	actual = inter("padinton", "paqefwtdjetyiytjneytjoeyjnejeyj") 
+	expected = "padinto"
+
+	if actual == expected
+		puts "The result is: #{actual}".green
+	else
+		puts "The result is: #{actual}, should be #{expected}".red
+	end
+end
+
+def test2
+	actual = inter("ddf6vewg64f", "gtwthgdwthdwfteewhrtag6h4ffdhsd")
+	expected = "df6ewg4"
+
+	if actual == expected
+		puts "The result is: #{actual}".green
+	else
+		puts "The result is: #{actual}, should be #{expected}".red
+	end
+end
+
+def test3
+	actual = inter("rienc", "cette phrase ne cache rien")
+	expected = "rienc"
+
+	if actual == expected
+		puts "The result is: #{actual}".green
+	else
+		puts "The result is: #{actual}, should be #{expected}".red
+	end
+end
+
+def run_tests
+	draw_header
+	test1
+	test2
+	test3
+end
+
+run_tests
