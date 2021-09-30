@@ -1,11 +1,8 @@
+require_relative 'test.rb'
 
 class CaesarCipher
-    def initialize
-        puts "=" * 17
-        puts "| CAESAR CIPHER |"
-        puts "=" * 17
-    end
-    def shift(char, shift)
+    
+    def shift_forward(char, shift)
         if char.ord.between?(65, 90)
             result = (((char.ord - 65) + shift) % 26) + 65
         elsif char.ord.between?(97, 122)
@@ -15,16 +12,33 @@ class CaesarCipher
         end
         result.chr
     end
+    
     def encrypt(message, shift)
         result = ""
         message.each_char do |letter|
-            shifted_letter = shift(letter, shift)
+            shifted_letter = shift_forward(letter, shift)
             result << shifted_letter
         end
         result
     end
+
 end
 
-mamsnotes = CaesarCipher.new
-puts mamsnotes.encrypt("Good evening!", 5)
-puts mamsnotes.encrypt("Mtuj dtz fwj mfansl f lwjfy kwnifd snlmy ytt :)", -5)
+def test_cipher()
+
+    cipher = CaesarCipher.new
+    test = Test.new(__method__.to_s)
+
+    greeting_encrypted = "Ltti jajsnsl!"
+    greeting = "Good evening!"
+    test.compare_strings(cipher.encrypt(greeting, 5), greeting_encrypted)
+    test.compare_strings(cipher.encrypt(greeting_encrypted, -5), greeting)
+
+    message = "Hope you are having a great friday night too :)"
+    message_encrypted = "Mtuj dtz fwj mfansl f lwjfy kwnifd snlmy ytt :)"
+    test.compare_strings(cipher.encrypt(message, 5), message_encrypted)
+    test.compare_strings(cipher.encrypt(message_encrypted, -5), message)
+
+end
+
+test_cipher
