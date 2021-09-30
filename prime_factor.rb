@@ -10,7 +10,6 @@ Factors are the numbers you multiply together to get another number.
 # check if num is prime, returs true or false
 def is_prime(num)
     (2..(num - 1)).each do |n|
-        # p n
       if num % n == 0
          return false 
       end
@@ -38,8 +37,16 @@ def recursive_div(num, factors)
         factors << num
         return factors
     else
-        return recursive_div(num, factors)
+        recursive_div(num, factors)
     end
+    return factors
+end
+
+def print_preetty(factors)
+    0. upto factors.length - 1 do |num|
+        print factors[num].to_s + " * " 
+    end
+    print factors[-1].to_s + "\n"
 end
 
 def factorization(num)
@@ -50,8 +57,7 @@ def factorization(num)
     end 
 end
 
-# testing 
-[2, 3, 4, 5, 6, 7, 9, 15, 19, 23, 24, 100, 102, 228, 300, 22809].each do |test|
-    puts "Input is #{test}: " + factorization(test).to_s
-end
+# p factorization(24)
+
+# puts is_prime(24)
 
