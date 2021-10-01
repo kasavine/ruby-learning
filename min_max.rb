@@ -9,9 +9,8 @@ def min_max_sum(arr)
     (1..s_arr.length-1).each do |i|
         max += s_arr[i]
     end
-    puts "#{min} #{max}"
+    puts "Min sum: #{min}, max sum: #{max}"
 end
 
 min_max_sum([1, 2, 6, 3, 4, 5, 6])
-
 min_max_sum([1, 2, 0, 3, 4, 5, 2])
